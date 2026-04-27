@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "package": "@auth0/auth0-react",
+    "version": "2.2.4",
+    "status": "active",
+    "generatedAt": "2025-01-10T00:00:00.000Z"
+  },
+  "navigation": [
+    {
+      "section": "Provider",
+      "items": [
+        { "id": "auth0provider", "title": "Auth0Provider", "kind": "function" }
+      ]
+    },
+    {
+      "section": "Hooks",
+      "items": [
+        { "id": "use-auth0", "title": "useAuth0", "kind": "function" },
+        { "id": "use-login-with-redirect", "title": "loginWithRedirect", "kind": "function" },
+        { "id": "use-logout", "title": "logout", "kind": "function" }
+      ]
+    },
+    {
+      "section": "Components",
+      "items": [
+        { "id": "with-auth-required", "title": "withAuthenticationRequired", "kind": "function" }
+      ]
+    }
+  ],
+  "pages": {
+    "auth0provider": {
+      "id": "auth0provider",
+      "title": "Auth0Provider",
+      "kind": "function",
+      "section": "Provider",
+      "description": "Provides the Auth0 context to your React application. Wrap your app root with this component.",
+      "signature": "Auth0Provider(props: Auth0ProviderOptions): JSX.Element",
+      "parameters": [
+        { "name": "domain", "type": "string", "optional": false, "description": "Your Auth0 domain." },
+        { "name": "clientId", "type": "string", "optional": false, "description": "Your Auth0 application client ID." },
+        { "name": "authorizationParams", "type": "AuthorizationParams", "optional": true, "description": "Parameters sent to the /authorize endpoint." }
+      ],
+      "examples": [
+        {
+          "title": "",
+          "language": "tsx",
+          "code": "import { Auth0Provider } from '@auth0/auth0-react';\n\nReactDOM.createRoot(document.getElementById('root')!).render(\n  <Auth0Provider\n    domain=\"YOUR_AUTH0_DOMAIN\"\n    clientId=\"YOUR_CLIENT_ID\"\n    authorizationParams={{ redirect_uri: window.location.origin }}\n  >\n    <App />\n  </Auth0Provider>\n);"
+        }
+      ]
+    },
+    "use-auth0": {
+      "id": "use-auth0",
+      "title": "useAuth0",
+      "kind": "function",
+      "section": "Hooks",
+      "description": "Hook to access the Auth0 client and user state.",
+      "signature": "useAuth0(): Auth0ContextInterface",
+      "parameters": [],
+      "returns": {
+        "type": "Auth0ContextInterface",
+        "description": "Object containing user, isLoading, isAuthenticated, loginWithRedirect, logout, and getAccessTokenSilently."
+      },
+      "examples": [
+        {
+          "title": "",
+          "language": "tsx",
+          "code": "import { useAuth0 } from '@auth0/auth0-react';\n\nexport default function Profile() {\n  const { user, isAuthenticated, isLoading } = useAuth0();\n  if (isLoading) return <p>Loading...</p>;\n  if (!isAuthenticated) return null;\n  return <p>Welcome, {user?.name}</p>;\n}"
+        }
+      ]
+    },
+    "use-login-with-redirect": {
+      "id": "use-login-with-redirect",
+      "title": "loginWithRedirect",
+      "kind": "function",
+      "section": "Hooks",
+      "description": "Redirects the user to the Auth0 Universal Login page.",
+      "signature": "loginWithRedirect(options?: RedirectLoginOptions): Promise<void>",
+      "parameters": [
+        { "name": "options", "type": "RedirectLoginOptions", "optional": true, "description": "Options passed to the /authorize endpoint." }
+      ],
+      "returns": { "type": "Promise<void>", "description": "" },
+      "examples": [
+        {
+          "title": "",
+          "language": "tsx",
+          "code": "const { loginWithRedirect } = useAuth0();\n\n<button onClick={() => loginWithRedirect()}>Log in</button>"
+        }
+      ]
+    },
+    "use-logout": {
+      "id": "use-logout",
+      "title": "logout",
+      "kind": "function",
+      "section": "Hooks",
+      "description": "Logs the user out and optionally redirects to the Auth0 logout endpoint.",
+      "signature": "logout(options?: LogoutOptions): Promise<void>",
+      "parameters": [
+        { "name": "options", "type": "LogoutOptions", "optional": true, "description": "Options including logoutParams.returnTo for post-logout redirect URL." }
+      ],
+      "returns": { "type": "Promise<void>", "description": "" },
+      "examples": [
+        {
+          "title": "",
+          "language": "tsx",
+          "code": "const { logout } = useAuth0();\n\n<button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>\n  Log out\n</button>"
+        }
+      ]
+    },
+    "with-auth-required": {
+      "id": "with-auth-required",
+      "title": "withAuthenticationRequired",
+      "kind": "function",
+      "section": "Components",
+      "description": "Higher-order component that wraps a React component and requires the user to be authenticated. Redirects to login if not.",
+      "signature": "withAuthenticationRequired<P>(component: ComponentType<P>, options?: WithAuthenticationRequiredOptions): FC<P>",
+      "parameters": [
+        { "name": "component", "type": "ComponentType<P>", "optional": false, "description": "The component to protect." },
+        { "name": "options", "type": "WithAuthenticationRequiredOptions", "optional": true, "description": "" }
+      ],
+      "returns": { "type": "FC<P>", "description": "The wrapped component." },
+      "examples": [
+        {
+          "title": "",
+          "language": "tsx",
+          "code": "import { withAuthenticationRequired } from '@auth0/auth0-react';\n\nconst ProtectedPage = withAuthenticationRequired(Dashboard, {\n  onRedirecting: () => <p>Redirecting to login...</p>,\n});"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+---
+title: "Management"
+description: "Client for the Auth0 Management API. Manage users, connections, applications, and tenant settings."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"auth0-python","version":"v4","label":"Python","title":"Management","versions":[{"version":"v4","status":"active","landingPage":"authentication"}],"currentPage":"management","groups":[{"section":"Authentication","items":[{"id":"authentication","title":"Authentication","kind":"class"},{"id":"authorize-url","title":"authorize_url","kind":"method"},{"id":"code-exchange","title":"code_exchange","kind":"method"}]},{"section":"Management","items":[{"id":"management","title":"Management","kind":"class"},{"id":"users-get","title":"users.get","kind":"method"},{"id":"users-update","title":"users.update","kind":"method"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Client for the Auth0 Management API. Manage users, connections, applications, and tenant settings.","constructor":{"signature":"Management(token: str, domain: str, **kwargs)","parameters":[{"name":"token","type":"str","optional":false,"description":"Management API access token."},{"name":"domain","type":"str","optional":false,"description":"Your Auth0 domain."}]},"kind":"class","examples":[{"title":"","language":"python","code":"from auth0.management import Management\n\nmgmt = Management(token='MANAGEMENT_API_TOKEN', domain='YOUR_AUTH0_DOMAIN')"}]}};
+
+<SdkPageLayout {..._sdkNav} />

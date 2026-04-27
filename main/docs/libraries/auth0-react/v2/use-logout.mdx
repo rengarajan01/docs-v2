@@ -1,0 +1,11 @@
+---
+title: "logout"
+description: "Logs the user out and optionally redirects to the Auth0 logout endpoint."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"auth0-react","version":"v2","label":"React","title":"logout","versions":[{"version":"v2","status":"active","landingPage":"auth0provider"}],"currentPage":"use-logout","groups":[{"section":"Provider","items":[{"id":"auth0provider","title":"Auth0Provider","kind":"function"}]},{"section":"Hooks","items":[{"id":"use-auth0","title":"useAuth0","kind":"function"},{"id":"use-login-with-redirect","title":"loginWithRedirect","kind":"function"},{"id":"use-logout","title":"logout","kind":"function"}]},{"section":"Components","items":[{"id":"with-auth-required","title":"withAuthenticationRequired","kind":"function"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Logs the user out and optionally redirects to the Auth0 logout endpoint.","signature":"logout(options?: LogoutOptions): Promise\u003cvoid\u003e","parameters":[{"name":"options","type":"LogoutOptions","optional":true,"description":"Options including logoutParams.returnTo for post-logout redirect URL."}],"kind":"function","returns":{"type":"Promise\u003cvoid\u003e","description":""},"examples":[{"title":"","language":"tsx","code":"const { logout } = useAuth0();\n\n\u003cbutton onClick={() =\u003e logout({ logoutParams: { returnTo: window.location.origin } })}\u003e\n  Log out\n\u003c/button\u003e"}]}};
+
+<SdkPageLayout {..._sdkNav} />

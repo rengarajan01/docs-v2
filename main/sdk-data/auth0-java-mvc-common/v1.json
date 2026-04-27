@@ -1,0 +1,1196 @@
+{
+  "meta": {
+    "package": "com.auth0:mvc-auth-commons",
+    "version": "1.12.0",
+    "status": "active",
+    "generatedAt": "2026-04-24T05:29:32.719465Z"
+  },
+  "navigation": [
+    {
+      "section": "Core",
+      "items": [
+        {
+          "id": "authentication-controller",
+          "title": "AuthenticationController",
+          "kind": "class"
+        },
+        {
+          "id": "authentication-controller-builder",
+          "title": "AuthenticationController.Builder",
+          "kind": "class"
+        },
+        {
+          "id": "authorize-url",
+          "title": "AuthorizeUrl",
+          "kind": "class"
+        },
+        {
+          "id": "tokens",
+          "title": "Tokens",
+          "kind": "class"
+        }
+      ]
+    },
+    {
+      "section": "Interfaces",
+      "items": [
+        {
+          "id": "domain-resolver",
+          "title": "DomainResolver",
+          "kind": "interface"
+        }
+      ]
+    },
+    {
+      "section": "Utilities",
+      "items": [
+        {
+          "id": "session-utils",
+          "title": "SessionUtils",
+          "kind": "class"
+        }
+      ]
+    },
+    {
+      "section": "Exceptions",
+      "items": [
+        {
+          "id": "identity-verification-exception",
+          "title": "IdentityVerificationException",
+          "kind": "class"
+        },
+        {
+          "id": "invalid-request-exception",
+          "title": "InvalidRequestException",
+          "kind": "class"
+        }
+      ]
+    }
+  ],
+  "pages": {
+    "authentication-controller": {
+      "id": "authentication-controller",
+      "title": "AuthenticationController",
+      "kind": "class",
+      "description": "Base Auth0 Authenticator class. Allows to easily authenticate using the Auth0 Hosted Login Page.",
+      "signature": "public class AuthenticationController",
+      "members": [
+        {
+          "id": "new-builder",
+          "title": "newBuilder",
+          "kind": "method",
+          "signature": "public static Builder newBuilder(String domain, String clientId, String clientSecret)",
+          "description": "Create a new `Builder` instance to configure the `AuthenticationController` response type and algorithm used on the verification. By default it will request response type 'code' and later perform the Code Exchange, but if the response type is changed to 'token' it will handle the Implicit Grant using the HS256 algorithm with the Client Secret as secret.",
+          "parameters": [
+            {
+              "name": "domain",
+              "type": "String",
+              "optional": false,
+              "description": "the Auth0 domain"
+            },
+            {
+              "name": "clientId",
+              "type": "String",
+              "optional": false,
+              "description": "the Auth0 application's client id"
+            },
+            {
+              "name": "clientSecret",
+              "type": "String",
+              "optional": false,
+              "description": "the Auth0 application's client secret"
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "a new Builder instance ready to configure"
+          },
+          "examples": [
+            {
+              "title": "Create a builder with a static domain",
+              "language": "java",
+              "code": "AuthenticationController controller = AuthenticationController\n    .newBuilder(\"YOUR_DOMAIN.auth0.com\", \"YOUR_CLIENT_ID\", \"YOUR_CLIENT_SECRET\")\n    .withResponseType(\"code\")\n    .build();"
+            }
+          ]
+        },
+        {
+          "id": "new-builder-2",
+          "title": "newBuilder",
+          "kind": "method",
+          "signature": "public static Builder newBuilder(DomainResolver domainResolver, String clientId, String clientSecret)",
+          "description": "Create a new `Builder` instance to configure the `AuthenticationController` response type and algorithm used on the verification. By default it will request response type 'code' and later perform the Code Exchange, but if the response type is changed to 'token' it will handle the Implicit Grant using the HS256 algorithm with the Client Secret as secret.",
+          "parameters": [
+            {
+              "name": "domainResolver",
+              "type": "DomainResolver",
+              "optional": false,
+              "description": "the Auth0 domain resolver function"
+            },
+            {
+              "name": "clientId",
+              "type": "String",
+              "optional": false,
+              "description": "the Auth0 application's client id"
+            },
+            {
+              "name": "clientSecret",
+              "type": "String",
+              "optional": false,
+              "description": "the Auth0 application's client secret"
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "a new Builder instance ready to configure"
+          }
+        },
+        {
+          "id": "set-logging-enabled",
+          "title": "setLoggingEnabled",
+          "kind": "method",
+          "signature": "public void setLoggingEnabled(boolean enabled)",
+          "description": "Whether to enable or not the HTTP Logger for every Request and Response. Enabling this can expose sensitive information.",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "optional": false,
+              "description": "whether to enable the HTTP logger or not."
+            }
+          ]
+        },
+        {
+          "id": "do-not-send-telemetry",
+          "title": "doNotSendTelemetry",
+          "kind": "method",
+          "signature": "public void doNotSendTelemetry()",
+          "description": "Disable sending the Telemetry header on every request to the Auth0 API"
+        },
+        {
+          "id": "handle",
+          "title": "handle",
+          "kind": "method",
+          "signature": "public Tokens handle(HttpServletRequest request, HttpServletResponse response) throws IdentityVerificationException",
+          "description": "Process a request to obtain a set of `Tokens` that represent successful authentication or authorization.\n\nThis method should be called when processing the callback request to your application. It will validate authentication-related request parameters, handle performing a Code Exchange request if using the \"code\" response type, and verify the integrity of the ID token (if present).\n\n**Important:** When using this API, you **must** also use `AuthenticationController.buildAuthorizeUrl(HttpServletRequest,` when building the `AuthorizeUrl` that the user will be redirected to to login. Failure to do so may result in a broken login experience for the user.",
+          "parameters": [
+            {
+              "name": "request",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "the received request to process."
+            },
+            {
+              "name": "response",
+              "type": "HttpServletResponse",
+              "optional": false,
+              "description": "the received response to process."
+            }
+          ],
+          "returns": {
+            "type": "Tokens",
+            "description": "the Tokens obtained after the user authentication."
+          },
+          "throws": [
+            {
+              "name": "InvalidRequestException",
+              "type": "InvalidRequestException",
+              "description": "if the error is result of making an invalid authentication request."
+            },
+            {
+              "name": "IdentityVerificationException",
+              "type": "IdentityVerificationException",
+              "description": "if an error occurred while verifying the request tokens."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Process the callback request and retrieve tokens",
+              "language": "java",
+              "code": "try {\n    Tokens tokens = controller.handle(request, response);\n    String accessToken = tokens.getAccessToken();\n    String idToken     = tokens.getIdToken();\n} catch (IdentityVerificationException e) {\n    // Handle verification failure\n}"
+            }
+          ]
+        },
+        {
+          "id": "handle-2",
+          "title": "handle",
+          "kind": "method",
+          "signature": "public Tokens handle(HttpServletRequest request) throws IdentityVerificationException",
+          "description": "Process a request to obtain a set of `Tokens` that represent successful authentication or authorization.\n\nThis method should be called when processing the callback request to your application. It will validate authentication-related request parameters, handle performing a Code Exchange request if using the \"code\" response type, and verify the integrity of the ID token (if present).\n\n**Important:** When using this API, you **must** also use the `AuthenticationController.buildAuthorizeUrl(HttpServletRequest,` when building the `AuthorizeUrl` that the user will be redirected to to login. Failure to do so may result in a broken login experience for the user.\n\n**Deprecated.** This method uses the `HttpSession` for auth-based data, and is incompatible with clients that are using the \"id_token\" or \"token\" responseType with browsers that enforce SameSite cookie restrictions. This method will be removed in version 2.0.0. Use `AuthenticationController.handle(HttpServletRequest,` instead.",
+          "parameters": [
+            {
+              "name": "request",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "the received request to process."
+            }
+          ],
+          "returns": {
+            "type": "Tokens",
+            "description": "the Tokens obtained after the user authentication."
+          },
+          "throws": [
+            {
+              "name": "InvalidRequestException",
+              "type": "InvalidRequestException",
+              "description": "if the error is result of making an invalid authentication request."
+            },
+            {
+              "name": "IdentityVerificationException",
+              "type": "IdentityVerificationException",
+              "description": "if an error occurred while verifying the request tokens."
+            }
+          ]
+        },
+        {
+          "id": "build-authorize-url",
+          "title": "buildAuthorizeUrl",
+          "kind": "method",
+          "signature": "public AuthorizeUrl buildAuthorizeUrl(HttpServletRequest request, String redirectUri)",
+          "description": "Pre builds an Auth0 Authorize Url with the given redirect URI using a random state and a random nonce if applicable.\n\n**Important:** When using this API, you **must** also obtain the tokens using the `AuthenticationController.handle(HttpServletRequest)` method. Failure to do so may result in a broken login experience for users.\n\n**Deprecated.** This method stores data in the `HttpSession`, and is incompatible with clients that are using the \"id_token\" or \"token\" responseType with browsers that enforce SameSite cookie restrictions. This method will be removed in version 2.0.0. Use `AuthenticationController.buildAuthorizeUrl(HttpServletRequest,` instead.",
+          "parameters": [
+            {
+              "name": "request",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "the caller request. Used to keep the session context."
+            },
+            {
+              "name": "redirectUri",
+              "type": "String",
+              "optional": false,
+              "description": "the url to call back with the authentication result."
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the authorize url builder to continue any further parameter customization."
+          }
+        },
+        {
+          "id": "build-authorize-url-2",
+          "title": "buildAuthorizeUrl",
+          "kind": "method",
+          "signature": "public AuthorizeUrl buildAuthorizeUrl(HttpServletRequest request, HttpServletResponse response, String redirectUri)",
+          "description": "Pre builds an Auth0 Authorize Url with the given redirect URI using a random state and a random nonce if applicable.\n\n**Important:** When using this API, you **must** also obtain the tokens using the `AuthenticationController.handle(HttpServletRequest,` method. Failure to do so will result in a broken login experience for users.",
+          "parameters": [
+            {
+              "name": "request",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "the HTTP request"
+            },
+            {
+              "name": "response",
+              "type": "HttpServletResponse",
+              "optional": false,
+              "description": "the HTTP response. Used to store auth-based cookies."
+            },
+            {
+              "name": "redirectUri",
+              "type": "String",
+              "optional": false,
+              "description": "the url to call back with the authentication result."
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the authorize url builder to continue any further parameter customization."
+          },
+          "examples": [
+            {
+              "title": "Build and redirect to the authorization URL",
+              "language": "java",
+              "code": "String authorizeUrl = controller\n    .buildAuthorizeUrl(request, response, \"https://your-app.com/callback\")\n    .withScope(\"openid profile email\")\n    .withAudience(\"https://api.your-app.com\")\n    .build();\nresponse.sendRedirect(authorizeUrl);"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Create and use an AuthenticationController",
+          "language": "java",
+          "code": "AuthenticationController controller = AuthenticationController\n    .newBuilder(\"YOUR_DOMAIN.auth0.com\", \"YOUR_CLIENT_ID\", \"YOUR_CLIENT_SECRET\")\n    .build();\n\n// Build the authorization URL and redirect the user\nString authorizeUrl = controller\n    .buildAuthorizeUrl(request, response, \"https://your-app.com/callback\")\n    .build();\nresponse.sendRedirect(authorizeUrl);"
+        }
+      ]
+    },
+    "authentication-controller-builder": {
+      "id": "authentication-controller-builder",
+      "title": "AuthenticationController.Builder",
+      "kind": "class",
+      "signature": "public static class Builder",
+      "members": [
+        {
+          "id": "with-domain",
+          "title": "withDomain",
+          "kind": "method",
+          "signature": "public Builder withDomain(String domain)",
+          "description": "Sets the Auth0 domain to use. Note: The `domainResolver` must be null when setting the `domain`.",
+          "parameters": [
+            {
+              "name": "domain",
+              "type": "String",
+              "optional": false,
+              "description": "the Auth0 domain to use, a non-null value."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          },
+          "throws": [
+            {
+              "name": "IllegalStateException",
+              "type": "IllegalStateException",
+              "description": "if `domainResolver` is already set."
+            }
+          ]
+        },
+        {
+          "id": "with-domain-resolver",
+          "title": "withDomainResolver",
+          "kind": "method",
+          "signature": "public Builder withDomainResolver(DomainResolver domainResolver)",
+          "description": "Sets the Auth0 domain resolver function to use. Note: The `domain` must be null when setting the `domainResolver`.",
+          "parameters": [
+            {
+              "name": "domainResolver",
+              "type": "DomainResolver",
+              "optional": false,
+              "description": "the domain resolver function to use, a non-null value."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          },
+          "throws": [
+            {
+              "name": "IllegalStateException",
+              "type": "IllegalStateException",
+              "description": "if `domain` is already set."
+            }
+          ]
+        },
+        {
+          "id": "with-http-options",
+          "title": "withHttpOptions",
+          "kind": "method",
+          "signature": "public Builder withHttpOptions(HttpOptions httpOptions)",
+          "description": "Customize certain aspects of the underlying HTTP client networking library, such as timeouts and proxy configuration.",
+          "parameters": [
+            {
+              "name": "httpOptions",
+              "type": "HttpOptions",
+              "optional": false,
+              "description": "a non-null `HttpOptions`"
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          }
+        },
+        {
+          "id": "with-cookie-path",
+          "title": "withCookiePath",
+          "kind": "method",
+          "signature": "public Builder withCookiePath(String cookiePath)",
+          "description": "Specify that transient authentication-based cookies such as state and nonce are created with the specified `Path` cookie attribute.",
+          "parameters": [
+            {
+              "name": "cookiePath",
+              "type": "String",
+              "optional": false,
+              "description": "the path to set on the cookie."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this builder instance."
+          }
+        },
+        {
+          "id": "with-response-type",
+          "title": "withResponseType",
+          "kind": "method",
+          "signature": "public Builder withResponseType(String responseType)",
+          "description": "Change the response type to request in the Authorization step. Default value is 'code'.",
+          "parameters": [
+            {
+              "name": "responseType",
+              "type": "String",
+              "optional": false,
+              "description": "the response type to request. Any combination of 'code', 'token' and 'id_token' but 'token id_token' is allowed, using a space as separator."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          }
+        },
+        {
+          "id": "with-jwk-provider",
+          "title": "withJwkProvider",
+          "kind": "method",
+          "signature": "public Builder withJwkProvider(JwkProvider jwkProvider)",
+          "description": "Sets the Jwk Provider that will return the Public Key required to verify the token in case of Implicit Grant flows. This is required if the Auth0 Application is signing the tokens with the RS256 algorithm.",
+          "parameters": [
+            {
+              "name": "jwkProvider",
+              "type": "JwkProvider",
+              "optional": false,
+              "description": "a valid Jwk provider."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          }
+        },
+        {
+          "id": "with-clock-skew",
+          "title": "withClockSkew",
+          "kind": "method",
+          "signature": "public Builder withClockSkew(Integer clockSkew)",
+          "description": "Sets the clock-skew or leeway value to use in the ID Token verification. The value must be in seconds. Defaults to 60 seconds.",
+          "parameters": [
+            {
+              "name": "clockSkew",
+              "type": "Integer",
+              "optional": false,
+              "description": "the clock-skew to use for ID Token verification, in seconds."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          }
+        },
+        {
+          "id": "with-authentication-max-age",
+          "title": "withAuthenticationMaxAge",
+          "kind": "method",
+          "signature": "public Builder withAuthenticationMaxAge(Integer maxAge)",
+          "description": "Sets the allowable elapsed time in seconds since the last time user was authenticated. By default there is no limit.",
+          "parameters": [
+            {
+              "name": "maxAge",
+              "type": "Integer",
+              "optional": false,
+              "description": "the max age of the authentication, in seconds."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          }
+        },
+        {
+          "id": "with-legacy-same-site-cookie",
+          "title": "withLegacySameSiteCookie",
+          "kind": "method",
+          "signature": "public Builder withLegacySameSiteCookie(boolean useLegacySameSiteCookie)",
+          "description": "Sets whether fallback cookies will be set for clients that do not support SameSite=None cookie attribute. The SameSite Cookie attribute will only be set to \"None\" if the reponseType includes \"id_token\". By default this is true.",
+          "parameters": [
+            {
+              "name": "useLegacySameSiteCookie",
+              "type": "boolean",
+              "optional": false,
+              "description": "whether fallback auth-based cookies should be set."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "this same builder instance."
+          }
+        },
+        {
+          "id": "with-organization",
+          "title": "withOrganization",
+          "kind": "method",
+          "signature": "public Builder withOrganization(String organization)",
+          "description": "Sets the organization query string parameter value used to login to an organization.",
+          "parameters": [
+            {
+              "name": "organization",
+              "type": "String",
+              "optional": false,
+              "description": "The ID or name of the organization to log the user in to."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "the builder instance."
+          }
+        },
+        {
+          "id": "with-invitation",
+          "title": "withInvitation",
+          "kind": "method",
+          "signature": "public Builder withInvitation(String invitation)",
+          "description": "Sets the invitation query string parameter to join an organization. If using this, you must also specify the organization using `Builder.withOrganization(String)`.",
+          "parameters": [
+            {
+              "name": "invitation",
+              "type": "String",
+              "optional": false,
+              "description": "The ID of the invitation to accept. This is available on the URL that is provided when accepting an invitation."
+            }
+          ],
+          "returns": {
+            "type": "Builder",
+            "description": "the builder instance."
+          }
+        },
+        {
+          "id": "build",
+          "title": "build",
+          "kind": "method",
+          "signature": "public AuthenticationController build() throws UnsupportedOperationException",
+          "description": "Create a new `AuthenticationController` instance that will handle both Code Grant and Implicit Grant flows using either Code Exchange or Token Signature verification.",
+          "returns": {
+            "type": "AuthenticationController",
+            "description": "a new instance of `AuthenticationController`."
+          },
+          "throws": [
+            {
+              "name": "UnsupportedOperationException",
+              "type": "UnsupportedOperationException",
+              "description": "if the Implicit Grant is chosen and the environment doesn't support UTF-8 encoding."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Build the controller with RS256 token verification",
+              "language": "java",
+              "code": "JwkProvider jwkProvider = new JwkProviderBuilder(\"YOUR_DOMAIN.auth0.com\").build();\nAuthenticationController controller = AuthenticationController\n    .newBuilder(\"YOUR_DOMAIN.auth0.com\", \"YOUR_CLIENT_ID\", \"YOUR_CLIENT_SECRET\")\n    .withJwkProvider(jwkProvider)\n    .build();"
+            }
+          ]
+        }
+      ]
+    },
+    "authorize-url": {
+      "id": "authorize-url",
+      "title": "AuthorizeUrl",
+      "kind": "class",
+      "description": "Class to create and customize an Auth0 Authorize URL. It's not reusable.",
+      "signature": "public class AuthorizeUrl",
+      "members": [
+        {
+          "id": "with-organization",
+          "title": "withOrganization",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withOrganization(String organization)",
+          "description": "Sets the organization query string parameter value used to login to an organization.",
+          "parameters": [
+            {
+              "name": "organization",
+              "type": "String",
+              "optional": false,
+              "description": "The ID of the organization to log the user in to."
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance."
+          }
+        },
+        {
+          "id": "with-invitation",
+          "title": "withInvitation",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withInvitation(String invitation)",
+          "description": "Sets the invitation query string parameter to join an organization. If using this, you must also specify the organization using `AuthorizeUrl.withOrganization(String)`.",
+          "parameters": [
+            {
+              "name": "invitation",
+              "type": "String",
+              "optional": false,
+              "description": "The ID of the invitation to accept. This is available on the URL that is provided when accepting an invitation."
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance."
+          }
+        },
+        {
+          "id": "with-connection",
+          "title": "withConnection",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withConnection(String connection)",
+          "description": "Sets the connection value.",
+          "parameters": [
+            {
+              "name": "connection",
+              "type": "String",
+              "optional": false,
+              "description": "connection to set"
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance"
+          }
+        },
+        {
+          "id": "with-secure-cookie",
+          "title": "withSecureCookie",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withSecureCookie(boolean secureCookie)",
+          "description": "Sets whether cookies used during the authentication flow have the `Secure` attribute set or not. By default, cookies will be set with the Secure attribute if the responseType includes `id_token` and thus requires the `SameSite=None` cookie attribute set. Setting this to false will **not** override this behavior, as clients will reject cookies with `SameSite=None` unless the `Secure` attribute is set.\n\nWhile not guaranteed by all clients, generally a cookie with the `Secure` attribute will be rejected unless served over HTTPS.",
+          "parameters": [
+            {
+              "name": "secureCookie",
+              "type": "boolean",
+              "optional": false,
+              "description": "whether to always set the Secure attribute on all cookies."
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance."
+          }
+        },
+        {
+          "id": "with-audience",
+          "title": "withAudience",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withAudience(String audience)",
+          "description": "Sets the audience value.",
+          "parameters": [
+            {
+              "name": "audience",
+              "type": "String",
+              "optional": false,
+              "description": "audience to set"
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance"
+          }
+        },
+        {
+          "id": "with-state",
+          "title": "withState",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withState(String state)",
+          "description": "Sets the state value.",
+          "parameters": [
+            {
+              "name": "state",
+              "type": "String",
+              "optional": false,
+              "description": "state to set"
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance"
+          }
+        },
+        {
+          "id": "with-nonce",
+          "title": "withNonce",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withNonce(String nonce)",
+          "description": "Sets the nonce value.",
+          "parameters": [
+            {
+              "name": "nonce",
+              "type": "String",
+              "optional": false,
+              "description": "nonce to set"
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance"
+          }
+        },
+        {
+          "id": "with-scope",
+          "title": "withScope",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withScope(String scope)",
+          "description": "Sets the scope value.",
+          "parameters": [
+            {
+              "name": "scope",
+              "type": "String",
+              "optional": false,
+              "description": "scope to set"
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance"
+          }
+        },
+        {
+          "id": "with-parameter",
+          "title": "withParameter",
+          "kind": "method",
+          "signature": "public AuthorizeUrl withParameter(String name, String value)",
+          "description": "Sets an additional parameter.",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "String",
+              "optional": false,
+              "description": "name of the parameter"
+            },
+            {
+              "name": "value",
+              "type": "String",
+              "optional": false,
+              "description": "value of the parameter to set"
+            }
+          ],
+          "returns": {
+            "type": "AuthorizeUrl",
+            "description": "the builder instance"
+          }
+        },
+        {
+          "id": "build",
+          "title": "build",
+          "kind": "method",
+          "signature": "public String build() throws IllegalStateException",
+          "description": "Creates a string representation of the URL with the configured parameters. It cannot be called more than once.",
+          "returns": {
+            "type": "String",
+            "description": "the string URL"
+          },
+          "throws": [
+            {
+              "name": "IllegalStateException",
+              "type": "IllegalStateException",
+              "description": "if it's called more than once"
+            }
+          ],
+          "examples": [
+            {
+              "title": "Build the final authorization URL",
+              "language": "java",
+              "code": "String authorizeUrl = controller\n    .buildAuthorizeUrl(request, response, \"https://your-app.com/callback\")\n    .withScope(\"openid profile email\")\n    .build();\nresponse.sendRedirect(authorizeUrl);"
+            }
+          ]
+        },
+        {
+          "id": "from-pushed-authorization-request",
+          "title": "fromPushedAuthorizationRequest",
+          "kind": "method",
+          "signature": "public String fromPushedAuthorizationRequest() throws InvalidRequestException",
+          "description": "Executes a Pushed Authorization Request (PAR) and uses the `request_uri` to construct the authorize URL.",
+          "returns": {
+            "type": "String",
+            "description": "the authorize URL as a string."
+          },
+          "throws": [
+            {
+              "name": "InvalidRequestException",
+              "type": "InvalidRequestException",
+              "description": "if there is an error when making the request."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Use Pushed Authorization Requests (PAR)",
+              "language": "java",
+              "code": "String authorizeUrl = controller\n    .buildAuthorizeUrl(request, response, \"https://your-app.com/callback\")\n    .fromPushedAuthorizationRequest();\nresponse.sendRedirect(authorizeUrl);"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Customize and build the authorization URL",
+          "language": "java",
+          "code": "String url = controller\n    .buildAuthorizeUrl(request, response, \"https://your-app.com/callback\")\n    .withConnection(\"google-oauth2\")\n    .withScope(\"openid profile email\")\n    .withAudience(\"https://api.your-app.com\")\n    .build();\nresponse.sendRedirect(url);"
+        }
+      ]
+    },
+    "domain-resolver": {
+      "id": "domain-resolver",
+      "title": "DomainResolver",
+      "kind": "interface",
+      "description": "Resolves the Auth0 domain dynamically from the incoming HTTP request. Implement this interface when you have multiple custom domains or need to select a tenant domain based on the request context.",
+      "signature": "public interface DomainResolver",
+      "members": [
+        {
+          "id": "resolve",
+          "title": "resolve",
+          "kind": "method",
+          "signature": "public String resolve(HttpServletRequest request)",
+          "description": "Resolves the domain to be used for the current request.",
+          "parameters": [
+            {
+              "name": "request",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "the current HttpServletRequest"
+            }
+          ],
+          "returns": {
+            "type": "String",
+            "description": "a single domain string (e.g., \"tenant.auth0.com\")"
+          },
+          "examples": [
+            {
+              "title": "Return different domains based on request host",
+              "language": "java",
+              "code": "public String resolve(HttpServletRequest request) {\n    return request.getServerName().endsWith(\".us.example.com\")\n        ? \"tenant-us.auth0.com\"\n        : \"tenant-eu.auth0.com\";\n}"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Route requests to different tenants by host header",
+          "language": "java",
+          "code": "DomainResolver resolver = request -> {\n    String host = request.getServerName();\n    if (host.endsWith(\".us.example.com\")) return \"tenant-us.auth0.com\";\n    return \"tenant-eu.auth0.com\";\n};\nAuthenticationController controller = AuthenticationController\n    .newBuilder(resolver, \"YOUR_CLIENT_ID\", \"YOUR_CLIENT_SECRET\")\n    .build();"
+        }
+      ]
+    },
+    "identity-verification-exception": {
+      "id": "identity-verification-exception",
+      "title": "IdentityVerificationException",
+      "kind": "class",
+      "description": "Thrown when an error occurs while verifying the identity tokens returned by Auth0 during authentication. This is the base exception for all authentication errors in this SDK.",
+      "signature": "public class IdentityVerificationException extends Exception",
+      "members": [
+        {
+          "id": "get-code",
+          "title": "getCode",
+          "kind": "method",
+          "signature": "public String getCode()",
+          "description": "Getter for the code of the error.",
+          "returns": {
+            "type": "String",
+            "description": "the error code."
+          }
+        },
+        {
+          "id": "is-api-error",
+          "title": "isAPIError",
+          "kind": "method",
+          "signature": "public boolean isAPIError()",
+          "returns": {
+            "type": "boolean"
+          }
+        },
+        {
+          "id": "is-jwt-error",
+          "title": "isJWTError",
+          "kind": "method",
+          "signature": "public boolean isJWTError()",
+          "returns": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "title": "Handle identity verification errors",
+          "language": "java",
+          "code": "try {\n    Tokens tokens = controller.handle(request, response);\n} catch (IdentityVerificationException e) {\n    if (e.isAPIError()) {\n        // Auth0 API returned an error response\n    } else if (e.isJWTError()) {\n        // Token signature or claims validation failed\n    }\n}"
+        }
+      ]
+    },
+    "invalid-request-exception": {
+      "id": "invalid-request-exception",
+      "title": "InvalidRequestException",
+      "kind": "class",
+      "description": "Represents an error occurred while executing a request against the Auth0 Authentication API. Extends `IdentityVerificationException` and is thrown for OAuth protocol errors, invalid state parameters, or missing required tokens.",
+      "signature": "public class InvalidRequestException extends IdentityVerificationException",
+      "members": [
+        {
+          "id": "get-description",
+          "title": "getDescription",
+          "kind": "method",
+          "signature": "public String getDescription()",
+          "description": "Getter for the description of the error.\n\n**Deprecated.** use `.getMessage()`",
+          "returns": {
+            "type": "String",
+            "description": "the error description if available, null otherwise."
+          }
+        }
+      ],
+      "examples": [
+        {
+          "title": "Handle an invalid request exception",
+          "language": "java",
+          "code": "try {\n    Tokens tokens = controller.handle(request, response);\n} catch (InvalidRequestException e) {\n    // OAuth error or invalid/missing request parameters\n    String errorCode = e.getCode();\n    String message   = e.getMessage();\n}"
+        }
+      ]
+    },
+    "session-utils": {
+      "id": "session-utils",
+      "title": "SessionUtils",
+      "kind": "class",
+      "description": "Helper class to handle easy session key-value storage.",
+      "signature": "public abstract class SessionUtils",
+      "members": [
+        {
+          "id": "get-session",
+          "title": "getSession",
+          "kind": "method",
+          "signature": "protected static HttpSession getSession(HttpServletRequest req)",
+          "description": "Extracts the HttpSession from the given request.",
+          "parameters": [
+            {
+              "name": "req",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "a valid request to get the session from"
+            }
+          ],
+          "returns": {
+            "type": "HttpSession",
+            "description": "the session of the request"
+          }
+        },
+        {
+          "id": "set",
+          "title": "set",
+          "kind": "method",
+          "signature": "public static void set(HttpServletRequest req, String name, Object value)",
+          "description": "Set's the attribute value to the request session.",
+          "parameters": [
+            {
+              "name": "req",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "a valid request to get the session from"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "optional": false,
+              "description": "the name of the attribute"
+            },
+            {
+              "name": "value",
+              "type": "Object",
+              "optional": false,
+              "description": "the value to set"
+            }
+          ],
+          "examples": [
+            {
+              "title": "Store a value in the session after authentication",
+              "language": "java",
+              "code": "Tokens tokens = controller.handle(request, response);\nSessionUtils.set(request, \"accessToken\", tokens.getAccessToken());"
+            }
+          ]
+        },
+        {
+          "id": "get",
+          "title": "get",
+          "kind": "method",
+          "signature": "public static Object get(HttpServletRequest req, String name)",
+          "description": "Get the attribute with the given name from the request session.",
+          "parameters": [
+            {
+              "name": "req",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "a valid request to get the session from"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "optional": false,
+              "description": "the name of the attribute"
+            }
+          ],
+          "returns": {
+            "type": "Object",
+            "description": "the attribute stored in the session or null if it doesn't exists"
+          },
+          "examples": [
+            {
+              "title": "Retrieve a stored value from the session",
+              "language": "java",
+              "code": "String accessToken = (String) SessionUtils.get(request, \"accessToken\");"
+            }
+          ]
+        },
+        {
+          "id": "remove",
+          "title": "remove",
+          "kind": "method",
+          "signature": "public static Object remove(HttpServletRequest req, String name)",
+          "description": "Same as `.get(HttpServletRequest,` but it also removes the value from the request session.",
+          "parameters": [
+            {
+              "name": "req",
+              "type": "HttpServletRequest",
+              "optional": false,
+              "description": "a valid request to get the session from"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "optional": false,
+              "description": "the name of the attribute"
+            }
+          ],
+          "returns": {
+            "type": "Object",
+            "description": "the attribute stored in the session or null if it doesn't exists"
+          },
+          "examples": [
+            {
+              "title": "Remove a value from the session (e.g. on logout)",
+              "language": "java",
+              "code": "String accessToken = (String) SessionUtils.remove(request, \"accessToken\");"
+            }
+          ]
+        }
+      ]
+    },
+    "tokens": {
+      "id": "tokens",
+      "title": "Tokens",
+      "kind": "class",
+      "description": "Wrapper for the the user's credentials returned by Auth0.\n\naccessToken: Access Token for Auth0 API idToken: Identity Token with user information refreshToken: Refresh Token that can be used to request new tokens without signing in again type: Token Type expiresIn: Token expiration",
+      "signature": "public class Tokens implements Serializable",
+      "constructor": {
+        "signature": "new Tokens(String accessToken, String idToken, String refreshToken, String type, Long expiresIn, String domain, String issuer)",
+        "parameters": [
+          {
+            "name": "accessToken",
+            "type": "String",
+            "optional": false,
+            "description": "access token for Auth0 API"
+          },
+          {
+            "name": "idToken",
+            "type": "String",
+            "optional": false,
+            "description": "identity token with user information"
+          },
+          {
+            "name": "refreshToken",
+            "type": "String",
+            "optional": false,
+            "description": "refresh token that can be used to request new tokens without signing in again"
+          },
+          {
+            "name": "type",
+            "type": "String",
+            "optional": false,
+            "description": "token type"
+          },
+          {
+            "name": "expiresIn",
+            "type": "Long",
+            "optional": false,
+            "description": "token expiration"
+          },
+          {
+            "name": "domain",
+            "type": "String",
+            "optional": false,
+            "description": "the Auth0 domain that issued these tokens"
+          },
+          {
+            "name": "issuer",
+            "type": "String",
+            "optional": false,
+            "description": "the issuer URL from the ID token"
+          }
+        ]
+      },
+      "members": [
+        {
+          "id": "get-access-token",
+          "title": "getAccessToken",
+          "kind": "method",
+          "signature": "public String getAccessToken()",
+          "description": "Getter for the Access Token.",
+          "returns": {
+            "type": "String",
+            "description": "the Access Token."
+          }
+        },
+        {
+          "id": "get-id-token",
+          "title": "getIdToken",
+          "kind": "method",
+          "signature": "public String getIdToken()",
+          "description": "Getter for the Id Token.",
+          "returns": {
+            "type": "String",
+            "description": "the Id Token."
+          }
+        },
+        {
+          "id": "get-refresh-token",
+          "title": "getRefreshToken",
+          "kind": "method",
+          "signature": "public String getRefreshToken()",
+          "description": "Getter for the Refresh Token.",
+          "returns": {
+            "type": "String",
+            "description": "the Refresh Token."
+          }
+        },
+        {
+          "id": "get-type",
+          "title": "getType",
+          "kind": "method",
+          "signature": "public String getType()",
+          "description": "Getter for the token Type .",
+          "returns": {
+            "type": "String",
+            "description": "the Type of the token."
+          }
+        },
+        {
+          "id": "get-expires-in",
+          "title": "getExpiresIn",
+          "kind": "method",
+          "signature": "public Long getExpiresIn()",
+          "description": "Getter for the Expiration time of the Token.",
+          "returns": {
+            "type": "Long",
+            "description": "the expiration time."
+          }
+        },
+        {
+          "id": "get-domain",
+          "title": "getDomain",
+          "kind": "method",
+          "signature": "public String getDomain()",
+          "description": "Getter for the Auth0 domain that issued these tokens. Used for domain-specific session management in Multiple Custom Domains (MCD) scenarios.",
+          "returns": {
+            "type": "String",
+            "description": "the domain that issued these tokens, or null for non-MCD scenarios"
+          }
+        },
+        {
+          "id": "get-issuer",
+          "title": "getIssuer",
+          "kind": "method",
+          "signature": "public String getIssuer()",
+          "description": "Getter for the issuer URL from the ID token. Used for domain-specific session management in Multiple Custom Domains (MCD) scenarios.",
+          "returns": {
+            "type": "String",
+            "description": "the issuer URL, or null for non-MCD scenarios"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "title": "Inspect tokens after a successful authentication",
+          "language": "java",
+          "code": "Tokens tokens = controller.handle(request, response);\nString accessToken  = tokens.getAccessToken();\nString idToken      = tokens.getIdToken();\nString refreshToken = tokens.getRefreshToken();\nLong   expiresIn    = tokens.getExpiresIn();"
+        }
+      ]
+    }
+  }
+}

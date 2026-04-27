@@ -1,0 +1,11 @@
+---
+title: "useAuth0"
+description: "Hook to access the Auth0 client and user state."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"auth0-react","version":"v2","label":"React","title":"useAuth0","versions":[{"version":"v2","status":"active","landingPage":"auth0provider"}],"currentPage":"use-auth0","groups":[{"section":"Provider","items":[{"id":"auth0provider","title":"Auth0Provider","kind":"function"}]},{"section":"Hooks","items":[{"id":"use-auth0","title":"useAuth0","kind":"function"},{"id":"use-login-with-redirect","title":"loginWithRedirect","kind":"function"},{"id":"use-logout","title":"logout","kind":"function"}]},{"section":"Components","items":[{"id":"with-auth-required","title":"withAuthenticationRequired","kind":"function"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Hook to access the Auth0 client and user state.","signature":"useAuth0(): Auth0ContextInterface","kind":"function","returns":{"type":"Auth0ContextInterface","description":"Object containing user, isLoading, isAuthenticated, loginWithRedirect, logout, and getAccessTokenSilently."},"examples":[{"title":"","language":"tsx","code":"import { useAuth0 } from '@auth0/auth0-react';\n\nexport default function Profile() {\n  const { user, isAuthenticated, isLoading } = useAuth0();\n  if (isLoading) return \u003cp\u003eLoading...\u003c/p\u003e;\n  if (!isAuthenticated) return null;\n  return \u003cp\u003eWelcome, {user?.name}\u003c/p\u003e;\n}"}]}};
+
+<SdkPageLayout {..._sdkNav} />

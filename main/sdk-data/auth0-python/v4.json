@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "package": "auth0-python",
+    "version": "4.7.1",
+    "status": "active",
+    "generatedAt": "2025-01-10T00:00:00.000Z"
+  },
+  "navigation": [
+    {
+      "section": "Authentication",
+      "items": [
+        { "id": "authentication", "title": "Authentication", "kind": "class" },
+        { "id": "authorize-url", "title": "authorize_url", "kind": "method" },
+        { "id": "code-exchange", "title": "code_exchange", "kind": "method" }
+      ]
+    },
+    {
+      "section": "Management",
+      "items": [
+        { "id": "management", "title": "Management", "kind": "class" },
+        { "id": "users-get", "title": "users.get", "kind": "method" },
+        { "id": "users-update", "title": "users.update", "kind": "method" }
+      ]
+    }
+  ],
+  "pages": {
+    "authentication": {
+      "id": "authentication",
+      "title": "Authentication",
+      "kind": "class",
+      "section": "Authentication",
+      "description": "Client for Auth0 authentication endpoints. Handles login, logout, token exchange, and user profile retrieval.",
+      "constructor": {
+        "signature": "Authentication(domain: str, client_id: str, client_secret: str = None, **kwargs)",
+        "parameters": [
+          { "name": "domain", "type": "str", "optional": false, "description": "Your Auth0 domain." },
+          { "name": "client_id", "type": "str", "optional": false, "description": "Your application client ID." },
+          { "name": "client_secret", "type": "str", "optional": true, "description": "Your application client secret." }
+        ]
+      },
+      "examples": [
+        {
+          "title": "",
+          "language": "python",
+          "code": "from auth0.authentication import Authentication\n\nauth = Authentication(\n    domain='YOUR_AUTH0_DOMAIN',\n    client_id='YOUR_CLIENT_ID',\n    client_secret='YOUR_CLIENT_SECRET'\n)"
+        }
+      ]
+    },
+    "authorize-url": {
+      "id": "authorize-url",
+      "title": "authorize_url",
+      "kind": "method",
+      "section": "Authentication",
+      "memberOf": "Authentication",
+      "description": "Builds the URL to redirect the user to for authorization.",
+      "signature": "authorize_url(redirect_uri: str, **kwargs) -> str",
+      "parameters": [
+        { "name": "redirect_uri", "type": "str", "optional": false, "description": "The URL to redirect to after authorization." },
+        { "name": "kwargs", "type": "dict", "optional": true, "description": "Additional parameters sent to /authorize." }
+      ],
+      "returns": { "type": "str", "description": "The authorization URL." },
+      "examples": [
+        {
+          "title": "",
+          "language": "python",
+          "code": "url = auth.authorize_url(\n    redirect_uri='https://example.com/callback',\n    scope='openid profile email'\n)"
+        }
+      ]
+    },
+    "code-exchange": {
+      "id": "code-exchange",
+      "title": "code_exchange",
+      "kind": "method",
+      "section": "Authentication",
+      "memberOf": "Authentication",
+      "description": "Exchanges an authorization code for tokens.",
+      "signature": "code_exchange(code: str, redirect_uri: str) -> dict",
+      "parameters": [
+        { "name": "code", "type": "str", "optional": false, "description": "Authorization code from the callback." },
+        { "name": "redirect_uri", "type": "str", "optional": false, "description": "Must match the redirect_uri used in the authorization request." }
+      ],
+      "returns": { "type": "dict", "description": "Token response containing access_token, id_token, and optionally refresh_token." },
+      "examples": [
+        {
+          "title": "",
+          "language": "python",
+          "code": "tokens = auth.code_exchange(\n    code=request.args.get('code'),\n    redirect_uri='https://example.com/callback'\n)"
+        }
+      ]
+    },
+    "management": {
+      "id": "management",
+      "title": "Management",
+      "kind": "class",
+      "section": "Management",
+      "description": "Client for the Auth0 Management API. Manage users, connections, applications, and tenant settings.",
+      "constructor": {
+        "signature": "Management(token: str, domain: str, **kwargs)",
+        "parameters": [
+          { "name": "token", "type": "str", "optional": false, "description": "Management API access token." },
+          { "name": "domain", "type": "str", "optional": false, "description": "Your Auth0 domain." }
+        ]
+      },
+      "examples": [
+        {
+          "title": "",
+          "language": "python",
+          "code": "from auth0.management import Management\n\nmgmt = Management(token='MANAGEMENT_API_TOKEN', domain='YOUR_AUTH0_DOMAIN')"
+        }
+      ]
+    },
+    "users-get": {
+      "id": "users-get",
+      "title": "users.get",
+      "kind": "method",
+      "section": "Management",
+      "memberOf": "Management",
+      "description": "Gets a user by their ID.",
+      "signature": "users.get(id: str, fields: list = None) -> dict",
+      "parameters": [
+        { "name": "id", "type": "str", "optional": false, "description": "The user ID (e.g. auth0|64b2e5f8...)." },
+        { "name": "fields", "type": "list", "optional": true, "description": "List of fields to include in the response." }
+      ],
+      "returns": { "type": "dict", "description": "The user object." },
+      "examples": [
+        {
+          "title": "",
+          "language": "python",
+          "code": "user = mgmt.users.get('auth0|64b2e5f8a3c1d90012ef4567')"
+        }
+      ]
+    },
+    "users-update": {
+      "id": "users-update",
+      "title": "users.update",
+      "kind": "method",
+      "section": "Management",
+      "memberOf": "Management",
+      "description": "Updates a user's profile.",
+      "signature": "users.update(id: str, body: dict) -> dict",
+      "parameters": [
+        { "name": "id", "type": "str", "optional": false, "description": "The user ID." },
+        { "name": "body", "type": "dict", "optional": false, "description": "Fields to update on the user." }
+      ],
+      "returns": { "type": "dict", "description": "The updated user object." },
+      "examples": [
+        {
+          "title": "",
+          "language": "python",
+          "code": "updated = mgmt.users.update('auth0|64b2e5f8...', {'name': 'Jane Doe'})"
+        }
+      ]
+    }
+  }
+}

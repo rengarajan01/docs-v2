@@ -1,0 +1,11 @@
+---
+title: "code_exchange"
+description: "Exchanges an authorization code for tokens."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"auth0-python","version":"v4","label":"Python","title":"code_exchange","versions":[{"version":"v4","status":"active","landingPage":"authentication"}],"currentPage":"code-exchange","groups":[{"section":"Authentication","items":[{"id":"authentication","title":"Authentication","kind":"class"},{"id":"authorize-url","title":"authorize_url","kind":"method"},{"id":"code-exchange","title":"code_exchange","kind":"method"}]},{"section":"Management","items":[{"id":"management","title":"Management","kind":"class"},{"id":"users-get","title":"users.get","kind":"method"},{"id":"users-update","title":"users.update","kind":"method"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Exchanges an authorization code for tokens.","signature":"code_exchange(code: str, redirect_uri: str) -\u003e dict","parameters":[{"name":"code","type":"str","optional":false,"description":"Authorization code from the callback."},{"name":"redirect_uri","type":"str","optional":false,"description":"Must match the redirect_uri used in the authorization request."}],"kind":"method","returns":{"type":"dict","description":"Token response containing access_token, id_token, and optionally refresh_token."},"examples":[{"title":"","language":"python","code":"tokens = auth.code_exchange(\n    code=request.args.get('code'),\n    redirect_uri='https://example.com/callback'\n)"}]}};
+
+<SdkPageLayout {..._sdkNav} />

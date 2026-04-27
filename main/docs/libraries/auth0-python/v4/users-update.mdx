@@ -1,0 +1,11 @@
+---
+title: "users.update"
+description: "Updates a user's profile."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"auth0-python","version":"v4","label":"Python","title":"users.update","versions":[{"version":"v4","status":"active","landingPage":"authentication"}],"currentPage":"users-update","groups":[{"section":"Authentication","items":[{"id":"authentication","title":"Authentication","kind":"class"},{"id":"authorize-url","title":"authorize_url","kind":"method"},{"id":"code-exchange","title":"code_exchange","kind":"method"}]},{"section":"Management","items":[{"id":"management","title":"Management","kind":"class"},{"id":"users-get","title":"users.get","kind":"method"},{"id":"users-update","title":"users.update","kind":"method"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Updates a user's profile.","signature":"users.update(id: str, body: dict) -\u003e dict","parameters":[{"name":"id","type":"str","optional":false,"description":"The user ID."},{"name":"body","type":"dict","optional":false,"description":"Fields to update on the user."}],"kind":"method","returns":{"type":"dict","description":"The updated user object."},"examples":[{"title":"","language":"python","code":"updated = mgmt.users.update('auth0|64b2e5f8...', {'name': 'Jane Doe'})"}]}};
+
+<SdkPageLayout {..._sdkNav} />

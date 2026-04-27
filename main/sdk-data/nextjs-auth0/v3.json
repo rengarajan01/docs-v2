@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "package": "@auth0/nextjs-auth0",
+    "version": "3.5.0",
+    "status": "deprecated",
+    "generatedAt": "2025-01-10T00:00:00.000Z"
+  },
+  "navigation": [
+    {
+      "section": "Auth0Client",
+      "items": [
+        { "id": "init-auth0", "title": "initAuth0", "kind": "function" },
+        { "id": "get-session", "title": "getSession", "kind": "function" },
+        { "id": "get-access-token", "title": "getAccessToken", "kind": "function" },
+        { "id": "with-api-auth-required", "title": "withApiAuthRequired", "kind": "function" },
+        { "id": "with-page-auth-required", "title": "withPageAuthRequired", "kind": "function" }
+      ]
+    }
+  ],
+  "pages": {
+    "init-auth0": {
+      "id": "init-auth0",
+      "title": "initAuth0",
+      "kind": "function",
+      "section": "Auth0Client",
+      "description": "Initializes the Auth0 SDK. Call this once and export the returned helpers.",
+      "signature": "initAuth0(params?: ConfigParameters): Auth0Server",
+      "parameters": [
+        { "name": "params", "type": "ConfigParameters", "optional": true, "description": "SDK configuration. Reads from environment variables if not provided." }
+      ],
+      "returns": { "type": "Auth0Server", "description": "Object containing getSession, getAccessToken, withApiAuthRequired, withPageAuthRequired." },
+      "examples": [
+        {
+          "title": "",
+          "language": "ts",
+          "code": "// lib/auth0.ts\nimport { initAuth0 } from '@auth0/nextjs-auth0';\n\nexport default initAuth0();"
+        }
+      ]
+    },
+    "get-session": {
+      "id": "get-session",
+      "title": "getSession",
+      "kind": "function",
+      "section": "Auth0Client",
+      "description": "Returns the session for the current request, or null if not authenticated.",
+      "signature": "getSession(req: IncomingMessage, res: ServerResponse): Promise<Session | null>",
+      "parameters": [
+        { "name": "req", "type": "IncomingMessage", "optional": false, "description": "Incoming HTTP request." },
+        { "name": "res", "type": "ServerResponse", "optional": false, "description": "HTTP response." }
+      ],
+      "returns": { "type": "Promise<Session | null>", "description": "The session, or null if the user is not logged in." },
+      "examples": [
+        {
+          "title": "",
+          "language": "ts",
+          "code": "// pages/api/me.ts\nimport auth0 from '../../lib/auth0';\n\nexport default async function handler(req, res) {\n  const session = await auth0.getSession(req, res);\n  if (!session) return res.status(401).end();\n  res.json(session.user);\n}"
+        }
+      ]
+    },
+    "get-access-token": {
+      "id": "get-access-token",
+      "title": "getAccessToken",
+      "kind": "function",
+      "section": "Auth0Client",
+      "description": "Returns the access token for the current user, refreshing it if expired.",
+      "signature": "getAccessToken(req: IncomingMessage, res: ServerResponse, options?: GetAccessTokenOptions): Promise<GetAccessTokenResult>",
+      "parameters": [
+        { "name": "req", "type": "IncomingMessage", "optional": false, "description": "Incoming HTTP request." },
+        { "name": "res", "type": "ServerResponse", "optional": false, "description": "HTTP response." },
+        { "name": "options", "type": "GetAccessTokenOptions", "optional": true, "description": "" }
+      ],
+      "returns": { "type": "Promise<GetAccessTokenResult>", "description": "Object containing the access token string." },
+      "examples": [
+        {
+          "title": "",
+          "language": "ts",
+          "code": "const { accessToken } = await auth0.getAccessToken(req, res);"
+        }
+      ]
+    },
+    "with-api-auth-required": {
+      "id": "with-api-auth-required",
+      "title": "withApiAuthRequired",
+      "kind": "function",
+      "section": "Auth0Client",
+      "description": "Wraps an API route to require authentication. Returns 401 for unauthenticated requests.",
+      "signature": "withApiAuthRequired(handler: NextApiHandler): NextApiHandler",
+      "parameters": [
+        { "name": "handler", "type": "NextApiHandler", "optional": false, "description": "The API route handler to protect." }
+      ],
+      "returns": { "type": "NextApiHandler", "description": "The wrapped handler." },
+      "examples": [
+        {
+          "title": "",
+          "language": "ts",
+          "code": "export default auth0.withApiAuthRequired(async function handler(req, res) {\n  res.json({ ok: true });\n});"
+        }
+      ]
+    },
+    "with-page-auth-required": {
+      "id": "with-page-auth-required",
+      "title": "withPageAuthRequired",
+      "kind": "function",
+      "section": "Auth0Client",
+      "description": "Protects a page from unauthenticated access using getServerSideProps.",
+      "signature": "withPageAuthRequired(options?: WithPageAuthRequiredOptions): GetServerSideProps",
+      "parameters": [
+        { "name": "options", "type": "WithPageAuthRequiredOptions", "optional": true, "description": "" }
+      ],
+      "returns": { "type": "GetServerSideProps", "description": "" },
+      "examples": [
+        {
+          "title": "",
+          "language": "ts",
+          "code": "export const getServerSideProps = auth0.withPageAuthRequired();"
+        }
+      ]
+    }
+  }
+}

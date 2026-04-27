@@ -1,0 +1,11 @@
+---
+title: "ConfigurationError"
+description: "Error raised when SDK configuration is invalid."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"auth0-fastapi-api","version":"v1","label":"auth0-fastapi-api","title":"ConfigurationError","versions":[{"version":"v1","status":"active","landingPage":"auth0-fastapi"}],"currentPage":"configuration-error","groups":[{"section":"Core","items":[{"id":"auth0-fastapi","title":"Auth0FastAPI","kind":"class"}]},{"section":"Cache","items":[{"id":"cache-adapter","title":"CacheAdapter","kind":"interface"},{"id":"in-memory-cache","title":"InMemoryCache","kind":"class"}]},{"section":"Multi-Domain","items":[{"id":"domains-resolver","title":"DomainsResolver","kind":"type"},{"id":"domains-resolver-context","title":"DomainsResolverContext","kind":"interface"},{"id":"domains-resolver-error","title":"DomainsResolverError","kind":"class"}]},{"section":"Errors","items":[{"id":"configuration-error","title":"ConfigurationError","kind":"class"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Error raised when SDK configuration is invalid.","kind":"class","examples":[{"title":"","language":"python","code":"from auth0_fastapi_api import Auth0FastAPI\n\n# audience is required — omitting it raises ConfigurationError\nauth0 = Auth0FastAPI(domain='YOUR_AUTH0_DOMAIN')"}]}};
+
+<SdkPageLayout {..._sdkNav} />

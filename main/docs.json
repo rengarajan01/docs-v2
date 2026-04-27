@@ -3451,7 +3451,7 @@
             "tab": "SDKs",
             "groups": [
               {
-                "group": " ",
+                "group": "Overview",
                 "pages": [
                   "docs/libraries"
                 ]
@@ -3594,153 +3594,298 @@
                     ]
                   }
                 ]
-              },
+              }
+            ],
+            "dropdowns": [
               {
-                "group": "auth0-acul-react",
-                "pages": [
-                  "docs/libraries/acul/react-sdk",
+                "dropdown": "auth0-fastapi-api v1",
+                "icon": "code",
+                "groups": [
                   {
-                    "group": "Screens",
+                    "group": "Core",
+                    "collapsed": true,
                     "pages": [
-                      {
-                        "group": "Login",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/login/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/login-email-verification/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/login-id/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/login-password/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/login-passwordless-email-code/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/login-passwordless-sms-otp/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/logout/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/logout-aborted/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/logout-complete/index"
-                        ]
-                      },
-                      {
-                        "group": "Signup",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/signup/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/signup-id/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/signup-password/index"
-                        ]
-                      },
-                      {
-                        "group": "MFA",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-begin-enroll-options/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-country-codes/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-detect-browser-capabilities/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-email-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-email-list/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-enroll-result/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-login-options/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-otp-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-otp-enrollment-code/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-otp-enrollment-qr/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-phone-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-phone-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-push-challenge-push/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-push-enrollment-qr/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-push-list/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-push-welcome/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-recovery-code-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-recovery-code-challenge-new-code/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-recovery-code-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-sms-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-sms-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-sms-list/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-voice-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-voice-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-change-key-nickname/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-enrollment-success/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-error/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-not-available-error/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-platform-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-platform-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-roaming-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/mfa-webauthn-roaming-enrollment/index"
-                        ]
-                      },
-                      {
-                        "group": "Password",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-email/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-error/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-email-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-otp-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-phone-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-push-challenge-push/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-recovery-code-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-sms-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-voice-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-webauthn-platform-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-mfa-webauthn-roaming-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-request/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/reset-password-success/index"
-                        ]
-                      },
-                      {
-                        "group": "Device",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/device-code-activation/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/device-code-activation-allowed/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/device-code-activation-denied/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/device-code-confirmation/index"
-                        ]
-                      },
-                      {
-                        "group": "Consent",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/consent/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/customized-consent/index"
-                        ]
-                      },
-                      {
-                        "group": "Other",
-                        "pages": [
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/accept-invitation/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/email-identifier-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/email-otp-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/email-verification-result/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/interstitial-captcha/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/organization-picker/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/organization-selection/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/passkey-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/passkey-enrollment-local/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/phone-identifier-challenge/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/phone-identifier-enrollment/index",
-                          "docs/libraries/acul/react-sdk/API-Reference/Screens/redeem-ticket/index"
-                        ]
-                      }
+                      "docs/libraries/auth0-fastapi-api/v1/auth0-fastapi"
                     ]
                   },
                   {
-                    "group": "Hooks",
+                    "group": "Cache",
+                    "collapsed": true,
                     "pages": [
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useAuth0Themes",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useCurrentScreen",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useErrors",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useLoginIdentifiers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useMfaPolling",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/usePasswordValidation",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useResend",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useSignupIdentifiers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Hooks/useUsernameValidation"
+                      "docs/libraries/auth0-fastapi-api/v1/cache-adapter",
+                      "docs/libraries/auth0-fastapi-api/v1/in-memory-cache"
+                    ]
+                  },
+                  {
+                    "group": "Multi-Domain",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-fastapi-api/v1/domains-resolver",
+                      "docs/libraries/auth0-fastapi-api/v1/domains-resolver-context",
+                      "docs/libraries/auth0-fastapi-api/v1/domains-resolver-error"
+                    ]
+                  },
+                  {
+                    "group": "Errors",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-fastapi-api/v1/configuration-error"
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "Go v5",
+                "icon": "code",
+                "groups": [
+                  {
+                    "group": "Client",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-go/v5/new",
+                      "docs/libraries/auth0-go/v5/new-with-client-credentials"
+                    ]
+                  },
+                  {
+                    "group": "Authentication",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-go/v5/authentication-api",
+                      "docs/libraries/auth0-go/v5/login-with-auth-code",
+                      "docs/libraries/auth0-go/v5/logout"
+                    ]
+                  },
+                  {
+                    "group": "Management",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-go/v5/management-api",
+                      "docs/libraries/auth0-go/v5/users-create",
+                      "docs/libraries/auth0-go/v5/users-read",
+                      "docs/libraries/auth0-go/v5/users-update",
+                      "docs/libraries/auth0-go/v5/users-delete"
+                    ]
+                  },
+                  {
+                    "group": "Types",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-go/v5/user-type",
+                      "docs/libraries/auth0-go/v5/token-set"
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "auth0-java-mvc-common v1",
+                "icon": "code",
+                "groups": [
+                  {
+                    "group": "Core",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-java-mvc-common/v1/authentication-controller",
+                      "docs/libraries/auth0-java-mvc-common/v1/authentication-controller-builder",
+                      "docs/libraries/auth0-java-mvc-common/v1/authorize-url",
+                      "docs/libraries/auth0-java-mvc-common/v1/tokens"
                     ]
                   },
                   {
                     "group": "Interfaces",
+                    "collapsed": true,
                     "pages": [
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/BrandingMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/ClientMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/OrganizationMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/PromptMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/ScreenMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/TenantMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/TransactionMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/UntrustedDataMembers",
-                      "docs/libraries/acul/react-sdk/API-Reference/Types/interfaces/UserMembers"
+                      "docs/libraries/auth0-java-mvc-common/v1/domain-resolver"
+                    ]
+                  },
+                  {
+                    "group": "Utilities",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-java-mvc-common/v1/session-utils"
+                    ]
+                  },
+                  {
+                    "group": "Exceptions",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-java-mvc-common/v1/identity-verification-exception",
+                      "docs/libraries/auth0-java-mvc-common/v1/invalid-request-exception"
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "Python v4",
+                "icon": "brands/python",
+                "groups": [
+                  {
+                    "group": "Authentication",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-python/v4/authentication",
+                      "docs/libraries/auth0-python/v4/authorize-url",
+                      "docs/libraries/auth0-python/v4/code-exchange"
+                    ]
+                  },
+                  {
+                    "group": "Management",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-python/v4/management",
+                      "docs/libraries/auth0-python/v4/users-get",
+                      "docs/libraries/auth0-python/v4/users-update"
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "React v2",
+                "icon": "brands/react",
+                "groups": [
+                  {
+                    "group": "Provider",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-react/v2/auth0provider"
+                    ]
+                  },
+                  {
+                    "group": "Hooks",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-react/v2/use-auth0",
+                      "docs/libraries/auth0-react/v2/use-login-with-redirect",
+                      "docs/libraries/auth0-react/v2/use-logout"
+                    ]
+                  },
+                  {
+                    "group": "Components",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/auth0-react/v2/with-auth-required"
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "Next.js v4",
+                "icon": "brands/node-js",
+                "groups": [
+                  {
+                    "group": "Initialisation",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/nextjs-auth0/v4/auth0client"
+                    ]
+                  },
+                  {
+                    "group": "Auth0Client",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/nextjs-auth0/v4/middleware",
+                      "docs/libraries/nextjs-auth0/v4/get-session",
+                      "docs/libraries/nextjs-auth0/v4/get-access-token",
+                      "docs/libraries/nextjs-auth0/v4/get-access-token-for-connection",
+                      "docs/libraries/nextjs-auth0/v4/update-session",
+                      "docs/libraries/nextjs-auth0/v4/custom-token-exchange",
+                      "docs/libraries/nextjs-auth0/v4/mfa",
+                      "docs/libraries/nextjs-auth0/v4/with-page-auth-required",
+                      "docs/libraries/nextjs-auth0/v4/with-api-auth-required",
+                      "docs/libraries/nextjs-auth0/v4/start-interactive-login",
+                      "docs/libraries/nextjs-auth0/v4/get-token-by-backchannel-auth",
+                      "docs/libraries/nextjs-auth0/v4/connect-account",
+                      "docs/libraries/nextjs-auth0/v4/create-fetcher"
+                    ]
+                  },
+                  {
+                    "group": "Server",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/nextjs-auth0/v4/abstract-session-store",
+                      "docs/libraries/nextjs-auth0/v4/auth0client-options",
+                      "docs/libraries/nextjs-auth0/v4/pages-router-request",
+                      "docs/libraries/nextjs-auth0/v4/pages-router-response",
+                      "docs/libraries/nextjs-auth0/v4/before-session-saved-hook",
+                      "docs/libraries/nextjs-auth0/v4/on-callback-hook",
+                      "docs/libraries/nextjs-auth0/v4/on-callback-context",
+                      "docs/libraries/nextjs-auth0/v4/routes-options",
+                      "docs/libraries/nextjs-auth0/v4/routes",
+                      "docs/libraries/nextjs-auth0/v4/session-cookie-options",
+                      "docs/libraries/nextjs-auth0/v4/session-configuration",
+                      "docs/libraries/nextjs-auth0/v4/session-store-options",
+                      "docs/libraries/nextjs-auth0/v4/session-data",
+                      "docs/libraries/nextjs-auth0/v4/session-data-store",
+                      "docs/libraries/nextjs-auth0/v4/user",
+                      "docs/libraries/nextjs-auth0/v4/logout-token",
+                      "docs/libraries/nextjs-auth0/v4/logout-strategy",
+                      "docs/libraries/nextjs-auth0/v4/start-interactive-login-options",
+                      "docs/libraries/nextjs-auth0/v4/authorization-parameters",
+                      "docs/libraries/nextjs-auth0/v4/get-access-token-options",
+                      "docs/libraries/nextjs-auth0/v4/access-token-for-connection-options",
+                      "docs/libraries/nextjs-auth0/v4/connection-token-set",
+                      "docs/libraries/nextjs-auth0/v4/custom-token-exchange-options",
+                      "docs/libraries/nextjs-auth0/v4/custom-token-exchange-response",
+                      "docs/libraries/nextjs-auth0/v4/backchannel-authentication-options",
+                      "docs/libraries/nextjs-auth0/v4/backchannel-authentication-response",
+                      "docs/libraries/nextjs-auth0/v4/authorization-details",
+                      "docs/libraries/nextjs-auth0/v4/connect-account-options",
+                      "docs/libraries/nextjs-auth0/v4/mfa-client",
+                      "docs/libraries/nextjs-auth0/v4/authenticator",
+                      "docs/libraries/nextjs-auth0/v4/challenge-response",
+                      "docs/libraries/nextjs-auth0/v4/enroll-options",
+                      "docs/libraries/nextjs-auth0/v4/enroll-otp-options",
+                      "docs/libraries/nextjs-auth0/v4/enroll-oob-options",
+                      "docs/libraries/nextjs-auth0/v4/enrollment-response",
+                      "docs/libraries/nextjs-auth0/v4/verify-mfa-options",
+                      "docs/libraries/nextjs-auth0/v4/verify-mfa-options-base",
+                      "docs/libraries/nextjs-auth0/v4/verify-mfa-with-otp-options",
+                      "docs/libraries/nextjs-auth0/v4/verify-mfa-with-oob-options",
+                      "docs/libraries/nextjs-auth0/v4/verify-mfa-with-recovery-code-options",
+                      "docs/libraries/nextjs-auth0/v4/mfa-verify-response",
+                      "docs/libraries/nextjs-auth0/v4/domain-resolver",
+                      "docs/libraries/nextjs-auth0/v4/discovery-cache-options",
+                      "docs/libraries/nextjs-auth0/v4/dpop-key-pair",
+                      "docs/libraries/nextjs-auth0/v4/dpop-options",
+                      "docs/libraries/nextjs-auth0/v4/retry-config",
+                      "docs/libraries/nextjs-auth0/v4/subject-token-types",
+                      "docs/libraries/nextjs-auth0/v4/grant-type-custom-token-exchange",
+                      "docs/libraries/nextjs-auth0/v4/default-id-token-claims",
+                      "docs/libraries/nextjs-auth0/v4/filter-default-id-token-claims",
+                      "docs/libraries/nextjs-auth0/v4/generate-dpop-key-pair"
+                    ]
+                  },
+                  {
+                    "group": "Client",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/nextjs-auth0/v4/auth0provider",
+                      "docs/libraries/nextjs-auth0/v4/use-user",
+                      "docs/libraries/nextjs-auth0/v4/client-get-access-token",
+                      "docs/libraries/nextjs-auth0/v4/client-with-page-auth-required"
+                    ]
+                  },
+                  {
+                    "group": "Testing",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/nextjs-auth0/v4/generate-session-cookie"
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "Next.js v3 (Deprecated)",
+                "icon": "brands/node-js",
+                "groups": [
+                  {
+                    "group": "Auth0Client",
+                    "collapsed": true,
+                    "pages": [
+                      "docs/libraries/nextjs-auth0/v3/init-auth0",
+                      "docs/libraries/nextjs-auth0/v3/get-session",
+                      "docs/libraries/nextjs-auth0/v3/get-access-token",
+                      "docs/libraries/nextjs-auth0/v3/with-api-auth-required",
+                      "docs/libraries/nextjs-auth0/v3/with-page-auth-required"
                     ]
                   }
                 ]

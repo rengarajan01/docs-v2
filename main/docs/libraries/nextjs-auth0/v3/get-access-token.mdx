@@ -1,0 +1,11 @@
+---
+title: "getAccessToken"
+description: "Returns the access token for the current user, refreshing it if expired."
+mode: "custom"
+---
+
+import { SdkPageLayout } from '/snippets/SdkPageLayout.jsx';
+
+export const _sdkNav = {"sdk":"nextjs-auth0","version":"v3","label":"Next.js","title":"getAccessToken","versions":[{"version":"v4","status":"active","landingPage":"auth0client"},{"version":"v3","status":"deprecated","landingPage":"init-auth0"}],"currentPage":"get-access-token","groups":[{"section":"Auth0Client","items":[{"id":"init-auth0","title":"initAuth0","kind":"function"},{"id":"get-session","title":"getSession","kind":"function"},{"id":"get-access-token","title":"getAccessToken","kind":"function"},{"id":"with-api-auth-required","title":"withApiAuthRequired","kind":"function"},{"id":"with-page-auth-required","title":"withPageAuthRequired","kind":"function"}]}],"allSdks":[{"id":"auth0-fastapi-api","label":"auth0-fastapi-api","icon":null,"version":"v1","landingPage":"auth0-fastapi"},{"id":"auth0-go","label":"Go","icon":"golang","version":"v5","landingPage":"new"},{"id":"auth0-java-mvc-common","label":"auth0-java-mvc-common","icon":null,"version":"v1","landingPage":"authentication-controller"},{"id":"auth0-python","label":"Python","icon":"python","version":"v4","landingPage":"authentication"},{"id":"auth0-react","label":"React","icon":"react","version":"v2","landingPage":"auth0provider"},{"id":"nextjs-auth0","label":"Next.js","icon":"nextjs","version":"v4","landingPage":"auth0client"}],"page":{"description":"Returns the access token for the current user, refreshing it if expired.","signature":"getAccessToken(req: IncomingMessage, res: ServerResponse, options?: GetAccessTokenOptions): Promise\u003cGetAccessTokenResult\u003e","parameters":[{"name":"req","type":"IncomingMessage","optional":false,"description":"Incoming HTTP request."},{"name":"res","type":"ServerResponse","optional":false,"description":"HTTP response."},{"name":"options","type":"GetAccessTokenOptions","optional":true,"description":""}],"kind":"function","returns":{"type":"Promise\u003cGetAccessTokenResult\u003e","description":"Object containing the access token string."},"examples":[{"title":"","language":"ts","code":"const { accessToken } = await auth0.getAccessToken(req, res);"}]}};
+
+<SdkPageLayout {..._sdkNav} />

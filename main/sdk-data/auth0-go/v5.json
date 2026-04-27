@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "package": "github.com/auth0/go-auth0",
+    "version": "5.3.0",
+    "status": "active",
+    "generatedAt": "2025-01-10T00:00:00.000Z"
+  },
+  "navigation": [
+    {
+      "section": "Client",
+      "items": [
+        { "id": "new", "title": "New", "kind": "function" },
+        { "id": "new-with-client-credentials", "title": "NewWithClientCredentials", "kind": "function" }
+      ]
+    },
+    {
+      "section": "Authentication",
+      "items": [
+        { "id": "authentication-api", "title": "AuthenticationAPI", "kind": "class" },
+        { "id": "login-with-auth-code", "title": "LoginWithAuthCode", "kind": "method" },
+        { "id": "logout", "title": "Logout", "kind": "method" }
+      ]
+    },
+    {
+      "section": "Management",
+      "items": [
+        { "id": "management-api", "title": "ManagementAPI", "kind": "class" },
+        { "id": "users-create", "title": "Users.Create", "kind": "method" },
+        { "id": "users-read", "title": "Users.Read", "kind": "method" },
+        { "id": "users-update", "title": "Users.Update", "kind": "method" },
+        { "id": "users-delete", "title": "Users.Delete", "kind": "method" }
+      ]
+    },
+    {
+      "section": "Types",
+      "items": [
+        { "id": "user-type", "title": "User", "kind": "interface" },
+        { "id": "token-set", "title": "TokenSet", "kind": "interface" }
+      ]
+    }
+  ],
+  "pages": {
+    "new": {
+      "id": "new",
+      "title": "New",
+      "kind": "function",
+      "section": "Client",
+      "description": "Creates a new Auth0 API client using an OAuth2 token source. Use this when you already have a token from another source.",
+      "signature": "func New(ctx context.Context, domain string, opts ...Option) (*API, error)",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "domain", "type": "string", "optional": false, "description": "Your Auth0 tenant domain (e.g. example.us.auth0.com)." },
+        { "name": "opts", "type": "...Option", "optional": true, "description": "Functional options to configure the client." }
+      ],
+      "returns": { "type": "*API, error", "description": "The configured API client, or an error if initialization fails." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "import \"github.com/auth0/go-auth0\"\n\napi, err := auth0.New(\n    context.Background(),\n    \"YOUR_AUTH0_DOMAIN\",\n    auth0.WithStaticToken(\"YOUR_MANAGEMENT_API_TOKEN\"),\n)\nif err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "new-with-client-credentials": {
+      "id": "new-with-client-credentials",
+      "title": "NewWithClientCredentials",
+      "kind": "function",
+      "section": "Client",
+      "description": "Creates a new Auth0 API client using the client credentials flow. The client automatically fetches and refreshes the Management API token.",
+      "signature": "func NewWithClientCredentials(ctx context.Context, domain, clientID, clientSecret string, opts ...Option) (*API, error)",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "domain", "type": "string", "optional": false, "description": "Your Auth0 tenant domain." },
+        { "name": "clientID", "type": "string", "optional": false, "description": "Your application client ID." },
+        { "name": "clientSecret", "type": "string", "optional": false, "description": "Your application client secret." },
+        { "name": "opts", "type": "...Option", "optional": true, "description": "Functional options to configure the client." }
+      ],
+      "returns": { "type": "*API, error", "description": "The configured API client, or an error if initialization fails." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "api, err := auth0.NewWithClientCredentials(\n    context.Background(),\n    \"YOUR_AUTH0_DOMAIN\",\n    \"YOUR_CLIENT_ID\",\n    \"YOUR_CLIENT_SECRET\",\n)\nif err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "authentication-api": {
+      "id": "authentication-api",
+      "title": "AuthenticationAPI",
+      "kind": "class",
+      "section": "Authentication",
+      "description": "Provides access to the Auth0 Authentication API endpoints for login, logout, and token operations.",
+      "constructor": {
+        "signature": "func NewAuthenticationAPI(ctx context.Context, domain, clientID, clientSecret string, opts ...authcore.Option) (*AuthenticationAPI, error)",
+        "parameters": [
+          { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+          { "name": "domain", "type": "string", "optional": false, "description": "Your Auth0 tenant domain." },
+          { "name": "clientID", "type": "string", "optional": false, "description": "Your application client ID." },
+          { "name": "clientSecret", "type": "string", "optional": false, "description": "Your application client secret." }
+        ]
+      },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "import \"github.com/auth0/go-auth0/authentication\"\n\nauth, err := authentication.New(\n    context.Background(),\n    \"YOUR_AUTH0_DOMAIN\",\n    authentication.WithClientID(\"YOUR_CLIENT_ID\"),\n    authentication.WithClientSecret(\"YOUR_CLIENT_SECRET\"),\n)\nif err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "login-with-auth-code": {
+      "id": "login-with-auth-code",
+      "title": "LoginWithAuthCode",
+      "kind": "method",
+      "section": "Authentication",
+      "memberOf": "AuthenticationAPI",
+      "description": "Exchanges an authorization code for tokens using the Authorization Code flow.",
+      "signature": "func (a *AuthenticationAPI) LoginWithAuthCode(ctx context.Context, params oauth.LoginWithAuthCodeRequest, opts ...RequestOption) (*oauth.TokenSet, error)",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "params", "type": "oauth.LoginWithAuthCodeRequest", "optional": false, "description": "Request parameters including Code and RedirectURI." },
+        { "name": "opts", "type": "...RequestOption", "optional": true, "description": "Optional request-level overrides." }
+      ],
+      "returns": { "type": "*oauth.TokenSet, error", "description": "Token set including access token, ID token, and optionally a refresh token." },
+      "throws": [
+        { "type": "Error", "description": "if the authorization code is invalid or expired." }
+      ],
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "tokenSet, err := auth.OAuth.LoginWithAuthCode(ctx,\n    oauth.LoginWithAuthCodeRequest{\n        Code:        r.URL.Query().Get(\"code\"),\n        RedirectURI: \"https://example.com/callback\",\n    },\n)\nif err != nil {\n    http.Error(w, err.Error(), http.StatusInternalServerError)\n    return\n}"
+        }
+      ]
+    },
+    "logout": {
+      "id": "logout",
+      "title": "Logout",
+      "kind": "method",
+      "section": "Authentication",
+      "memberOf": "AuthenticationAPI",
+      "description": "Builds the logout URL to redirect the user to in order to end their Auth0 session.",
+      "signature": "func (a *AuthenticationAPI) Logout(params LogoutParams) string",
+      "parameters": [
+        { "name": "params", "type": "LogoutParams", "optional": false, "description": "Parameters including optional ReturnTo redirect URL." }
+      ],
+      "returns": { "type": "string", "description": "The fully formed logout URL." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "logoutURL := auth.Logout(authentication.LogoutParams{\n    ReturnTo: \"https://example.com\",\n    ClientID: \"YOUR_CLIENT_ID\",\n})\nhttp.Redirect(w, r, logoutURL, http.StatusTemporaryRedirect)"
+        }
+      ]
+    },
+    "management-api": {
+      "id": "management-api",
+      "title": "ManagementAPI",
+      "kind": "class",
+      "section": "Management",
+      "description": "Provides access to the Auth0 Management API. Manage users, connections, applications, roles, and tenant settings.",
+      "constructor": {
+        "signature": "func New(ctx context.Context, domain string, opts ...Option) (*API, error)",
+        "parameters": [
+          { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+          { "name": "domain", "type": "string", "optional": false, "description": "Your Auth0 tenant domain." },
+          { "name": "opts", "type": "...Option", "optional": true, "description": "Functional options to configure the client." }
+        ]
+      },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "api, err := auth0.NewWithClientCredentials(\n    context.Background(),\n    \"YOUR_AUTH0_DOMAIN\",\n    \"YOUR_CLIENT_ID\",\n    \"YOUR_CLIENT_SECRET\",\n)\nif err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "users-create": {
+      "id": "users-create",
+      "title": "Users.Create",
+      "kind": "method",
+      "section": "Management",
+      "memberOf": "ManagementAPI",
+      "description": "Creates a new user in the specified database connection.",
+      "signature": "func (m *UserManager) Create(ctx context.Context, u *User, opts ...RequestOption) error",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "u", "type": "*User", "optional": false, "description": "User object to create. Connection is required." },
+        { "name": "opts", "type": "...RequestOption", "optional": true, "description": "Optional request-level overrides." }
+      ],
+      "returns": { "type": "error", "description": "nil on success, or an error describing what went wrong." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "user := &management.User{\n    Connection: auth0.String(\"Username-Password-Authentication\"),\n    Email:      auth0.String(\"jane@example.com\"),\n    Password:   auth0.String(\"securepassword123\"),\n    Name:       auth0.String(\"Jane Doe\"),\n}\n\nif err := api.User.Create(ctx, user); err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "users-read": {
+      "id": "users-read",
+      "title": "Users.Read",
+      "kind": "method",
+      "section": "Management",
+      "memberOf": "ManagementAPI",
+      "description": "Retrieves a user by their ID.",
+      "signature": "func (m *UserManager) Read(ctx context.Context, id string, opts ...RequestOption) (*User, error)",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "id", "type": "string", "optional": false, "description": "The user ID (e.g. auth0|64b2e5f8...)." },
+        { "name": "opts", "type": "...RequestOption", "optional": true, "description": "Optional request-level overrides." }
+      ],
+      "returns": { "type": "*User, error", "description": "The user object, or an error if not found." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "user, err := api.User.Read(ctx, \"auth0|64b2e5f8a3c1d90012ef4567\")\nif err != nil {\n    log.Fatal(err)\n}\nfmt.Println(*user.Name)"
+        }
+      ]
+    },
+    "users-update": {
+      "id": "users-update",
+      "title": "Users.Update",
+      "kind": "method",
+      "section": "Management",
+      "memberOf": "ManagementAPI",
+      "description": "Updates an existing user. Only the fields set on the User struct are updated.",
+      "signature": "func (m *UserManager) Update(ctx context.Context, id string, u *User, opts ...RequestOption) error",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "id", "type": "string", "optional": false, "description": "The user ID." },
+        { "name": "u", "type": "*User", "optional": false, "description": "Fields to update. Only non-nil fields are sent." },
+        { "name": "opts", "type": "...RequestOption", "optional": true, "description": "Optional request-level overrides." }
+      ],
+      "returns": { "type": "error", "description": "nil on success." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "err := api.User.Update(ctx,\n    \"auth0|64b2e5f8a3c1d90012ef4567\",\n    &management.User{\n        Name: auth0.String(\"Jane Smith\"),\n    },\n)\nif err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "users-delete": {
+      "id": "users-delete",
+      "title": "Users.Delete",
+      "kind": "method",
+      "section": "Management",
+      "memberOf": "ManagementAPI",
+      "description": "Permanently deletes a user by their ID.",
+      "signature": "func (m *UserManager) Delete(ctx context.Context, id string, opts ...RequestOption) error",
+      "parameters": [
+        { "name": "ctx", "type": "context.Context", "optional": false, "description": "Context for the request lifecycle." },
+        { "name": "id", "type": "string", "optional": false, "description": "The user ID to delete." },
+        { "name": "opts", "type": "...RequestOption", "optional": true, "description": "Optional request-level overrides." }
+      ],
+      "returns": { "type": "error", "description": "nil on success." },
+      "examples": [
+        {
+          "title": "",
+          "language": "go",
+          "code": "if err := api.User.Delete(ctx, \"auth0|64b2e5f8a3c1d90012ef4567\"); err != nil {\n    log.Fatal(err)\n}"
+        }
+      ]
+    },
+    "user-type": {
+      "id": "user-type",
+      "title": "User",
+      "kind": "interface",
+      "section": "Types",
+      "description": "Represents an Auth0 user. All fields are pointers so only set fields are included in API requests.",
+      "properties": [
+        { "name": "ID", "type": "*string", "optional": true, "description": "The user's unique identifier." },
+        { "name": "Name", "type": "*string", "optional": true, "description": "The user's full name." },
+        { "name": "Email", "type": "*string", "optional": true, "description": "The user's email address." },
+        { "name": "EmailVerified", "type": "*bool", "optional": true, "description": "Whether the email address has been verified." },
+        { "name": "Picture", "type": "*string", "optional": true, "description": "URL of the user's profile picture." },
+        { "name": "Connection", "type": "*string", "optional": true, "description": "The connection the user belongs to. Required when creating a user." },
+        { "name": "Password", "type": "*string", "optional": true, "description": "The user's password. Write-only, never returned." }
+      ]
+    },
+    "token-set": {
+      "id": "token-set",
+      "title": "TokenSet",
+      "kind": "interface",
+      "section": "Types",
+      "description": "Represents the token response from a successful authentication.",
+      "properties": [
+        { "name": "AccessToken", "type": "string", "optional": false, "description": "The access token." },
+        { "name": "IDToken", "type": "string", "optional": true, "description": "The ID token (present when openid scope is requested)." },
+        { "name": "RefreshToken", "type": "string", "optional": true, "description": "The refresh token (present when offline_access scope is requested)." },
+        { "name": "TokenType", "type": "string", "optional": false, "description": "Token type, typically Bearer." },
+        { "name": "ExpiresIn", "type": "int64", "optional": false, "description": "Token lifetime in seconds." }
+      ]
+    }
+  }
+}
